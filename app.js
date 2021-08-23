@@ -62,6 +62,24 @@ function displayToDo(event) {
     input.value = "";
   }
 }
+//-------------------------------------------------------------------
+
+//when a to do is completed
+function completeToDo(toDoItem) {
+  toDoItem.classList.toggle(checkBtn);
+  toDoItem.classList.toggle(uncheckBtn);
+  toDoItem.parentNode.querySelector(".text").classList.toggle(textLineThrough);
+
+  toDoContainer[toDoItem.id].done = toDoContainer[toDoItem.id].done
+    ? false
+    : true;
+}
+
+//when a to do is removed
+function removeToDo(toDoItem) {
+  toDoItem.parentNode.parentNode.removeChild(toDoItem.parentNode);
+  toDoContainer[toDoItem.id].trash = true;
+}
 
 //targeting the dynamically created to do items
 toDoList.addEventListener("click", function (evt) {
@@ -73,7 +91,7 @@ toDoList.addEventListener("click", function (evt) {
     return;
 
   const toDoItem = evt.target;
-  const toDoStatus = toDoItem.attributes.toDoStatus.value;
+  const toDoStatus = toDoItem.attributes.status.value;
   //console.log(toDoStatus);
 
   if (toDoStatus === "complete") {
