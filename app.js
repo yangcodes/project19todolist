@@ -65,12 +65,19 @@ function displayToDo(event) {
 
 //targeting the dynamically created to do items
 toDoList.addEventListener("click", function (evt) {
+  if (
+    evt.path[0].localName === "p" ||
+    evt.path[0].localName === "li" ||
+    evt.path[0].localName === "ul"
+  )
+    return;
+
   const toDoItem = evt.target;
   const toDoStatus = toDoItem.attributes.toDoStatus.value;
   //console.log(toDoStatus);
 
   if (toDoStatus === "complete") {
-    completeTodO(toDoItem);
+    completeToDo(toDoItem);
   } else if (toDoStatus === "delete") {
     removeToDo(toDoItem);
   }
