@@ -62,3 +62,16 @@ function displayToDo(event) {
     input.value = "";
   }
 }
+
+//targeting the dynamically created to do items
+toDoList.addEventListener("click", function (evt) {
+  const toDoItem = evt.target;
+  const toDoStatus = toDoItem.attributes.toDoStatus.value;
+  //console.log(toDoStatus);
+
+  if (toDoStatus === "complete") {
+    completeTodO(toDoItem);
+  } else if (toDoStatus === "delete") {
+    removeToDo(toDoItem);
+  }
+});
