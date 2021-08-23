@@ -15,6 +15,7 @@ letid = 0;
 
 //add to do function
 function addToDo(toDo, id, done, trash) {
+  if (trash) return;
   const toDoDone = done ? checkBtn : uncheckBtn;
   const toDoLine = done ? textLineThrough : "";
 
@@ -25,4 +26,10 @@ function addToDo(toDo, id, done, trash) {
    <i class="fa fa-trash-o delete" status="delete" id="${id}"></i>
    </li>
   `;
+  const toDoItemPosition = "beforeend";
+  toDoList.insertAdjacentHTML(toDoItemPosition, item);
 }
+//addToDo("walk the talk", 0, false, false);
+//addToDo("walk the talk", 0, true, false);
+//addToDo("walk the talk", 0, true, true);
+// ----------------------------------------------------------------------------------------------
