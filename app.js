@@ -8,10 +8,11 @@ const toDoAddBtn = document.querySelector(".fa-plus-circle");
 const checkBtn = "fa-check-circle";
 const uncheckBtn = "fa-circle-thin";
 const textLineThrough = "line-through";
-
+// ------------------------------------------------------------
 //to do container
 let toDoContainer = [];
-letid = 0;
+let id = 0;
+// ------------------------------------------------------------------
 
 //add to do function
 function addToDo(toDo, id, done, trash) {
@@ -33,3 +34,31 @@ function addToDo(toDo, id, done, trash) {
 //addToDo("walk the talk", 0, true, false);
 //addToDo("walk the talk", 0, true, true);
 // ----------------------------------------------------------------------------------------------
+
+//adding a to-do the list when the enter key is pressed
+document.addEventListener("keyup", displayToDo);
+
+//adding a to-do to the list when the icon is clicked
+toDoAddBtn.addEventListener("click", displayToDo);
+
+//displaytoDo function
+function displayToDo(event) {
+  if (
+    event.keyCode === 13 ||
+    event.target.classList.value === "fa fa-plus-circle"
+  ) {
+    const toDo = input.value;
+    //checking whether the input field is NOT empty
+    if (toDo) {
+      addToDo(toDo, id, false, false);
+      toDoContainer.push({
+        name: toDo,
+        id: id,
+        done: false,
+        trash: false,
+      });
+      id++;
+    }
+    input.value = "";
+  }
+}
